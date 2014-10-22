@@ -21,6 +21,8 @@
 	<!-- SPELLS -->
 	<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script><!-- load angular -->
 	<script src="core.js"></script>
+	<script src="node_modules/jquery-ui/jquery-ui.js"></script>
+    <script src="node_modules/angular-ui-sortable/sortable.js"></script>
 
 </head>
 <!-- SET THE CONTROLLER AND GET ALL TODOS WITH INITIALIZE FUNCTION -->
@@ -49,7 +51,16 @@
 		</div>
 
 
-		<!-- TODO LIST -->
+		<div ui-sortable ng-model="todos">
+        <p class="input-group" ng-repeat="todo in todos" style="padding:5px 10px; cursor: move;">
+            <input type="text" ng-value="todo.text" class="form-control" readonly>
+            <span class="input-group-btn">
+                <button class="btn btn-danger" ng-click="deleteTodo(todo._id)" aria-label="Remove">X</button>
+            </span>
+        </p>
+    </div>
+
+		<!-- TODO LIST 
 		<div id="todo-list" class="row">
 			<div class="col-sm-4 col-sm-offset-4">
 
@@ -61,7 +72,7 @@
         	</p>
 
 			</div>
-		</div>
+		</div>-->
 
 		<div class="text-center text-muted">
 			<p>By <a href="http://zizo.co.uk">Zizo</a>.</p>
